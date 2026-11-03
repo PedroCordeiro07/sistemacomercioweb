@@ -14,15 +14,15 @@ public class Produto {
 
     private String nome;
     private BigDecimal preco;
-    private Integer quantidade;
+    private Integer estoque;
 
     public Produto() {
     }
 
-    public Produto(String nome, BigDecimal preco, Integer quantidade) {
+    public Produto(String nome, BigDecimal preco, Integer estoque) {
         this.nome = nome;
         this.preco = preco;
-        this.quantidade = quantidade;
+        this.estoque = estoque;
     }
 
     // Getters e Setters
@@ -50,12 +50,12 @@ public class Produto {
         this.preco = preco;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public Integer getEstoque() {
+        return estoque;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setEstoque(Integer estoque) {
+        this.estoque = estoque;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class Produto {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", preco=" + preco +
-                ", quantidade=" + quantidade +
+                ", estoque=" + estoque +
                 '}';
     }
 }
