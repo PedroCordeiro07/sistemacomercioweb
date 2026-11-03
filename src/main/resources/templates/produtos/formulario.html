@@ -9,7 +9,7 @@
 <div class="container">
     <h1>Cadastrar Produto</h1>
 
-    <form th:action="@{/templates/produtos/salvar}" th:object="${produto}" method="post">
+    <form th:action="@{/produtos/salvar}" th:object="${produto}" method="post">
         <div class="form-group">
             <label for="nome">Nome do Produto:</label>
             <input type="text" id="nome" th:field="*{nome}" required placeholder="Ex: Teclado Mecânico">
@@ -27,7 +27,7 @@
 
         <div class="actions">
             <button type="submit" class="btn btn-primary">Salvar</button>
-            <a th:href="@{/templates/produtos}" class="btn btn-secondary">Voltar para a lista</a>
+            <a th:href="@{/produtos}" class="btn btn-secondary">Voltar para a lista</a>
         </div>
     </form>
 </div>

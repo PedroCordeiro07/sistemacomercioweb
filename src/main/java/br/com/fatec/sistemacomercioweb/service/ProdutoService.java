@@ -15,11 +15,11 @@ public class ProdutoService {
         this.repository = repository;
     }
 
-    public List<Produto> listar() {
+    public List<Produto> listarTodos() {
         return repository.findAll();
     }
 
-    public Produto cadastrar(Produto produto) {
-        return repository.save(produto);
+    public void cadastrarProduto(Produto produto) {
+        repository.save(produto);
     }
 }

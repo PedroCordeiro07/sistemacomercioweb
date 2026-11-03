@@ -2,6 +2,7 @@ package br.com.fatec.sistemacomercioweb.controller;
 
 import br.com.fatec.sistemacomercioweb.model.Produto;
 import br.com.fatec.sistemacomercioweb.service.ProdutoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,27 +14,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/produtos")
 public class ProdutoController {
 
-    private final ProdutoService service;
-
-    public ProdutoController(ProdutoService service) {
-        this.service = service;
-    }
+    @Autowired
+    private ProdutoService produtoService;
 
     @GetMapping
-    public String listar(Model model) {
-        model.addAttribute("produtos", service.listar());
-        return "produtos/lista"; // Aponta para src/main/resources/templates/produtos/lista.html
+    public String listarProdutos(Model model) {
+        model.addAttribute("produtos", produtoService.listarTodos());
+        return "produtos/lista";
     }
 
     @GetMapping("/novo")
     public String exibirFormulario(Model model) {
         model.addAttribute("produto", new Produto());
-        return "produtos/formulario"; // Aponta para src/main/resources/templates/produtos/formulario.html
+        return "produtos/formulario";
     }
 
     @PostMapping("/salvar")
-    public String salvar(@ModelAttribute("produto") Produto produto) {
-        service.cadastrar(produto);
+    public String salvarProduto(@ModelAttribute("produto") Produto produto) {
+        produtoService.cadastrarProduto(produto);
         return "redirect:/produtos";
     }
 }

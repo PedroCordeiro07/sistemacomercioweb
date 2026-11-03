@@ -1,6 +1,10 @@
 package br.com.fatec.sistemacomercioweb.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
@@ -9,7 +13,6 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_produto")
     private Long id;
 
     private String nome;
@@ -19,13 +22,13 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(String nome, BigDecimal preco, Integer estoque) {
+    public Produto(Long id, String nome, BigDecimal preco, Integer estoque) {
+        this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.estoque = estoque;
     }
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -56,15 +59,5 @@ public class Produto {
 
     public void setEstoque(Integer estoque) {
         this.estoque = estoque;
-    }
-
-    @Override
-    public String toString() {
-        return "Produto{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", preco=" + preco +
-                ", estoque=" + estoque +
-                '}';
     }
 }
